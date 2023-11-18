@@ -1,0 +1,10 @@
+.check-box-group{
+    text-align: center;
+    background-color: white;
+    border-radius: 2px;
+    padding: 5px;
+    margin-left: 38%;
+    margin-bottom: 10px;
+    width: 60%;
+    font-size: large;
+}

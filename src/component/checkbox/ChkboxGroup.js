@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Checkbox from './CheckBox';
 import image1 from '../../assets/checkbutton/btn_unchecked.png';
 import image2 from '../../assets/checkbutton/btn_checked.png';
+import './ChkboxGroup.css';
 
 const ChkboxGroup = ({heading, content1, content2}) => {
     const [checkedOne, setCheckedOne] = React.useState(false);
@@ -24,7 +24,7 @@ const ChkboxGroup = ({heading, content1, content2}) => {
     return (
       <div className='check-box-group'>
         {heading}
-        <label onClick={setCheckedOne}>
+        <label onClick={handleChangeOne}>
         {
           !checkedOne && 
           <img src={image1} width="30px" height="30px" alt="img1" />
@@ -33,9 +33,9 @@ const ChkboxGroup = ({heading, content1, content2}) => {
           checkedOne &&
           <img src={image2} width="30px" height="30px" alt="img2" />
         }
-        {"Higher"}
+        {content1}
         </label>
-        <label onClick={setCheckedTwo}>
+        <label onClick={handleChangeTwo}>
         {
           !checkedTwo && 
           <img src={image1} width="30px" height="30px" alt="img1" />
@@ -44,7 +44,7 @@ const ChkboxGroup = ({heading, content1, content2}) => {
           checkedTwo &&
           <img src={image2} width="30px" height="30px" alt="img2" />
         }
-        {"Lower"}
+        {content2}
         </label>
         </div>
     );

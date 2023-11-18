@@ -3,6 +3,7 @@ import React from 'react';
 import questions from '../data/Data';
 import './QuizBox.css';
 import ChkboxGroup from './checkbox/ChkboxGroup';
+import questionImg from '../assets/question-mark/question-mark.png';
 
 function QuizBox () {
     const [showFinalResults, setFinalResults] = useState(false);
@@ -44,14 +45,18 @@ function QuizBox () {
     return (
         
         <div className='quiz-box'>
+            <img className="p-2" src="https://cdn-icons-png.flaticon.com/512/807/807281.png" width="80px" height="80px" alt="img3" />
             {/*  Quiz */}
             <ul className='quiz-sub-box'>
-                {
+                {   
                     questions.map((question) =>{
                         return (
                             <div className='quiz-item'>
                                 <div className='quiz-item-main'>
-                                    <h3>Q.{question.no}: {question.quiz}</h3>
+                                    <h3>
+                                        <img src = {questionImg} width = "50px" height="50px" alt = "Q."></img>
+                                        {question.no + 1}: {question.quiz}
+                                    </h3>
                                 </div>
                                 {
                                     <>
@@ -76,24 +81,10 @@ function QuizBox () {
                                         }
                                     </div>
                                     </div>
-                                    
-                                    
-
                                     {
                                         !question.option[0].isChecked &&
                                         !question.option[1].isChecked &&
                                         <ChkboxGroup  heading = "If you are not sure what to choose ..." content1= "Higer" content2 = "Lower"/>
-                                        // <p>
-                                        // If you're not sure what to choose ...:
-                                        // <label>
-                                        //   <input type="radio" name="myRadio" value="option1" />
-                                        //   Higher
-                                        // </label>
-                                        // <label>
-                                        //   <input type="radio" name="myRadio" value="option2" />
-                                        //   Lower
-                                        // </label>
-                                        // </p>
                                     }
                                     </>
                                     
