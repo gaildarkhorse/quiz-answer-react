@@ -2,23 +2,41 @@ import * as React from 'react';
 import image1 from '../../assets/checkbutton/btn_unchecked.png';
 import image2 from '../../assets/checkbutton/btn_checked.png';
 import './ChkboxGroup.css';
+import {setLow, setHigh, setNone} from '../../features/counterSlice';
+import { useDispatch } from 'react-redux';
 
 const ChkboxGroup = ({heading, content1, content2}) => {
+    const dispatch = useDispatch();
     const [checkedOne, setCheckedOne] = React.useState(false);
     const [checkedTwo, setCheckedTwo] = React.useState(false);
-  
+    const [checkedVal, setCheckedVal] = React.useState(0);
+
     const handleChangeOne = () => {
         if(checkedTwo){
-            setCheckedTwo(!checkedTwo);
+          setCheckedTwo(!checkedTwo);
         }
         setCheckedOne(!checkedOne);
+        if(!checkedOne){
+          setCheckedVal(1);
+          dispatch(setLow());  
+        }else{
+          setCheckedVal(0);
+          dispatch(setNone());
+        }
     };
   
     const handleChangeTwo = () => {
         if(checkedOne){
-            setCheckedOne(!checkedOne);
+          setCheckedOne(!checkedOne);
         }
         setCheckedTwo(!checkedTwo);
+        if(!checkedTwo){
+          setCheckedVal(2);
+          dispatch(setHigh());
+        }else{
+          setCheckedVal(0);
+          dispatch(setNone());
+        }
     };
   
     return (
